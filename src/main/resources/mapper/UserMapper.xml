@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zcy.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zcy.entity.User">
+        <id column="uid" property="uid" />
+        <id column="pwd" property="pwd" />
+        <id column="login_name" property="login_name" />
+        <id column="name" property="name" />
+        <id column="role_id" property="role_id" />
+    </resultMap>
+
+</mapper>

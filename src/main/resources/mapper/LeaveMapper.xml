@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zcy.mapper.LeaveMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zcy.entity.LeaveForm">
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <id column="proposer_id" property="proposerId" jdbcType="VARCHAR" />
+        <id column="proc_instan_id" property="procInstanId" jdbcType="VARCHAR" />
+        <id column="agent_id" property="agentId" jdbcType="VARCHAR" />
+        <id column="title" property="title" jdbcType="VARCHAR" />
+        <id column="leave_content" property="leaveContent" jdbcType="VARCHAR" />
+        <id column="reply" property="reply" jdbcType="VARCHAR" />
+        <id column="status" property="status"  jdbcType="INTEGER"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,81 @@
+server:
+  port: 9000
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    druid:
+      master:
+        jdbc-url: jdbc:mysql://localhost:3306/act_db?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&nullCatalogMeansCurrent=true
+        username: root
+        password: root
+        driver-class-name: com.mysql.cj.jdbc.Driver
+      salve:
+        jdbc-url: jdbc:mysql://localhost:3306/activiti?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&nullCatalogMeansCurrent=true
+        username: root
+        password: root
+        driver-class-name: com.mysql.cj.jdbc.Driver
+
+  freemarker:
+    allow-request-override: false
+    allow-session-override: false
+    cache: false #缓存配置
+    charset: UTF-8 #编码格式
+    request-context-attribute: request # 访问request名称定义
+    check-template-location: true
+    content-type: text/html # 设置Content-Type
+    enabled: true
+    expose-request-attributes: false # 设定所有request的属性在merge到模板的时候，是否要都添加到model中
+    expose-session-attributes: false # 是否在merge模板的时候，将HttpSession属性都添加到model中
+    expose-spring-macro-helpers: true # 设定是否以springMacroRequestContext的形式暴露RequestContext给Spring’s macro library使用
+    prefer-file-system-access: true
+    suffix: .ftl
+    template-loader-path: classpath:/templates/ #模板加载路径 按需配置
+    settings:
+      template_update_delay: 0
+      default_encoding: UTF-8
+      classic_compatible: true #解决前台使用${}赋值值为空的情况
+  resources:
+    static-locations: classpath:/static/
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+
+  activiti:
+    check-process-definitions: false #自动检查、部署流程定义文件  关闭activiti自动部署（使用流程设计器部署，不使用具体文件访问方式）
+    database-schema-update: true # 配置项可以设置流程引擎启动和关闭时数据库执行的策略。
+    history-level: full # 保存历史数据级别设置为full最高级别，便于历史数据的追溯
+
+# MyBatis plus
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.zcy.entity
+  global-config:
+    #刷新mapper 调试神器
+    db-config:
+      #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+      #idtype: 0
+      #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+      field-strategy: not_empty
+      #驼峰下划线转换
+      column-underline: false
+      #数据库大写下划线转换
+      capitalmode: false
+      #逻辑删除配置
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      db-type: mysql
+    refresh: true
+    #自定义填充策略接口实现
+    #metaobjecthandler: com.springboot.xxx
+    #自定义SQL注入器
+    #sqlinjector: com.baomidou.mybatisplus.extension.injector.LogicSqlInjector
+  configuration:
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: false # 开启驼峰命名转换
+    cache-enabled: false
