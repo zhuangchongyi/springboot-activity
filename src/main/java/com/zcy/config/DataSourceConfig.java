@@ -1,9 +1,9 @@
 package com.zcy.config;
 
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.zcy.common.datasource.DataSourceType;
 import com.zcy.common.datasource.DynamicDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -23,13 +23,13 @@ public class DataSourceConfig {
     @Bean(name = "masterDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.druid.master")
     public DataSource masterDataSource() {
-        return DataSourceBuilder.create().build();
+        return DruidDataSourceBuilder.create().build();
     }
 
     @Bean(name = "salveDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.druid.salve")
     public DataSource salveDataSource() {
-        return DataSourceBuilder.create().build();
+        return DruidDataSourceBuilder.create().build();
     }
 
     @Bean(name = "dynamicDataSource")
