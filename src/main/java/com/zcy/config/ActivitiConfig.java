@@ -24,7 +24,6 @@ public class ActivitiConfig extends AbstractProcessEngineAutoConfiguration {
     @Qualifier("salveDataSource")
     private DataSource salveDataSource;
 
-//    @Primary
     @Bean
     public SpringProcessEngineConfiguration springProcessEngineConfiguration(
             PlatformTransactionManager transactionManager, SpringAsyncExecutor springAsyncExecutor) throws IOException {
